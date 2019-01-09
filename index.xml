@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Wed, 09 Jan 2019 00:12:18 +0800</lastBuildDate>
     
-        <atom:link href="https://zhaoaozh.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaoaozh.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,16 +17,7 @@
       <pubDate>Wed, 09 Jan 2019 00:12:18 +0800</pubDate>
       
       <guid>https://zhaoaozh.github.io/about/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;php资深工程师-python-golang打杂工程师&#34;&gt;PHP资深工程师，python、golang打杂工程师&lt;/h2&gt;
-
-&lt;h4 id=&#34;姓名-李立朝&#34;&gt;姓名：李立朝&lt;/h4&gt;
-
-&lt;h4 id=&#34;网络id-zhaoaozh&#34;&gt;网络ID：zhaoaozh&lt;/h4&gt;
-</description>
-      
+      <description>PHP资深工程师，python、golang打杂工程师 姓名：李立朝 网络ID：zhaoaozh</description>
     </item>
     
   </channel>
