@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>使用hugo在github pages创建博客 - 朝朝博客</title>
+  <title>使用Hugo创建自己博客在Github pages - 朝朝博客</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="zhaoaozh" />
-  <meta name="description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可" />
+  <meta name="description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可以" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -57,26 +57,26 @@
 
 
 
-<meta property="og:title" content="使用hugo在github pages创建博客" />
-<meta property="og:description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可" />
+<meta property="og:title" content="使用Hugo创建自己博客在Github pages" />
+<meta property="og:description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可以" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zhaoaozh.github.io/post/hugo/" /><meta property="article:published_time" content="2019-01-10T23:09:46&#43;08:00"/>
 <meta property="article:modified_time" content="2019-01-10T23:09:46&#43;08:00"/>
 
-<meta itemprop="name" content="使用hugo在github pages创建博客">
-<meta itemprop="description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可">
+<meta itemprop="name" content="使用Hugo创建自己博客在Github pages">
+<meta itemprop="description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可以">
 
 
 <meta itemprop="datePublished" content="2019-01-10T23:09:46&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-10T23:09:46&#43;08:00" />
-<meta itemprop="wordCount" content="871">
+<meta itemprop="wordCount" content="821">
 
 
 
 <meta itemprop="keywords" content="hugo,github pages," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="使用hugo在github pages创建博客"/>
-<meta name="twitter:description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可"/>
+<meta name="twitter:title" content="使用Hugo创建自己博客在Github pages"/>
+<meta name="twitter:description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可以"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -288,7 +288,7 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">使用hugo在github pages创建博客</h1>
+      <h1 class="post-title">使用Hugo创建自己博客在Github pages</h1>
       
       <div class="post-meta">
         <time datetime="2019-01-10" class="post-time">
@@ -317,96 +317,89 @@
 
 <h2 id="目标">目标</h2>
 
-<h4 id="本教程的目标是通过hugo在github上搭建自己的blog">本教程的目标是通过hugo在github上搭建自己的blog</h4>
+<h4 id="本教程的目标是通过hugo在github上搭建自己的blog">本教程的目标是通过hugo在github上搭建自己的blog</h4>
 
 <h2 id="安装hugo">安装hugo</h2>
 
-<h4 id="hugo-使用go语言开发的-支持多个平台-最新的release版本可以在-hugo-releases-https-github-com-gohugoio-hugo-releases-当然你也可以使用go编译器工具链源码编译hugo-在-http-golang-org-doc-install-source-https-golang-org-doc-install-source-查看完整的操作系统和编译架构的支持列表">hugo 使用go语言开发的，支持多个平台。最新的release版本可以在<a href="https://github.com/gohugoio/hugo/releases">Hugo Releases</a>,当然你也可以使用Go编译器工具链源码编译hugo,在<a href="https://golang.org/doc/install/source">http://golang.org/doc/install/source</a> 查看完整的操作系统和编译架构的支持列表。</h4>
+<p>hugo 使用go语言开发的，支持多个平台。最新的release版本可以在<a href="https://github.com/gohugoio/hugo/releases">Hugo Releases</a>,当然你也可以使用Go编译器工具链源码编译hugo,在<a href="https://golang.org/doc/install/source">http://golang.org/doc/install/source</a> 查看完整的操作系统和编译架构的支持列表。</p>
 
-<h4 id="我是mac-os-使用homebrew安装-hugo-只需要运行命令">我是mac OS,使用homebrew安装hugo,只需要运行命令：</h4>
-
-<p><code>brew install hugo</code></p>
+<p>我是mac OS,使用homebrew安装hugo,只需要运行命令：
+<code>brew install hugo</code></p>
 
 <h2 id="生成站点">生成站点</h2>
 
-<h4 id="使用hugo快速生成站点-比如站点目录-blog">使用hugo快速生成站点，比如站点目录 ～/Blog</h4>
+<p>使用hugo快速生成站点，比如站点目录 ～/Blog</p>
 
 <p><code>hugo new site  ~/Blog</code></p>
 
 <h2 id="创建文章">创建文章</h2>
 
-<h4 id="创建一篇文章-放在post目录-方便生产聚合页面">创建一篇文章，放在post目录，方便生产聚合页面</h4>
+<p>创建一篇文章，放在post目录，方便生产聚合页面</p>
 
-<pre><code class="language-hugo">
-## 安装皮肤
+<p><code>hugo new post/markdown.md</code></p>
 
-#### 从[皮肤列表](http://www.gohugo.org/theme/)挑选中意的皮肤，找到皮肤的gitHub地址，然后克隆到themes目录中.
+<h2 id="安装皮肤">安装皮肤</h2>
 
-`cd themes &amp;&amp; git clone https://github.com/xianmin/hugo-theme-jane.git`
+<p>从<a href="http://www.gohugo.org/theme/">皮肤列表</a>挑选中意的皮肤，找到皮肤的gitHub地址，然后克隆到themes目录中.</p>
 
-## 运行hugo
+<p><code>cd themes &amp;&amp; git clone https://github.com/xianmin/hugo-theme-jane.git</code></p>
 
-#### 在你站点的根目录执行 hugo 命令
+<h2 id="运行hugo">运行hugo</h2>
 
-`hugo server --theme jane`
+<p>在你站点的根目录执行 hugo 命令</p>
 
-#### 在浏览器打开： http://localhost:1313
+<p><code>hugo server --theme jane</code></p>
 
+<h4 id="在浏览器打开-http-localhost-1313">在浏览器打开： <a href="http://localhost:1313">http://localhost:1313</a></h4>
 
-## 部署
-#### 在github 通过托管个人/组织页面来构建和发布你的github pages站点。我们需要创建两个不同的仓库,一个用于托管hugo的内容，另一个用于托管静态站点(hugo的public文件夹) 。
+<h2 id="部署">部署</h2>
 
-### 一步一步来:
+<p>在github 通过托管个人/组织页面来构建和发布你的github pages站点。我们需要创建两个不同的仓库,一个用于托管hugo的内容，另一个用于托管静态站点(hugo的public文件夹) 。</p>
 
-1. 在 GitHub 上创建 `&lt;your-project&gt;-hugo` 代码仓库（它将用于托管 Hugo 的内容）
+<h3 id="一步一步来">一步一步来:</h3>
 
-2. 在 GitHub 上创建 `&lt;username&gt;.github.io` 代码仓库（它将用于托管 public 文件夹：静态的网站）
+<ol>
+<li><p>在 GitHub 上创建 <code>&lt;your-project&gt;-hugo</code> 代码仓库（它将用于托管 Hugo 的内容）</p></li>
 
-3. `git clone &lt;&lt;your-project&gt;-hugo-url&gt; &amp;&amp; cd &lt;your-project&gt;-hugo`
+<li><p>在 GitHub 上创建 <code>&lt;username&gt;.github.io</code> 代码仓库（它将用于托管 public 文件夹：静态的网站）</p></li>
 
-4. 让你的网站在本地生效（`hugo server --watch -t &lt;yourtheme&gt;`）
+<li><p><code>git clone &lt;&lt;your-project&gt;-hugo-url&gt; &amp;&amp; cd &lt;your-project&gt;-hugo</code></p></li>
 
-5. 当你对结果满意时，Ctrl+C (关闭服务)并 `rm -rf public`（不用着急，使用 `hugo -t &lt;yourtheme&gt;` 总会重新生成这个文件夹的）
+<li><p>让你的网站在本地生效（<code>hugo server --watch -t &lt;yourtheme&gt;</code>）</p></li>
 
-6. `git submodule add git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git public`
+<li><p>当你对结果满意时，Ctrl+C (关闭服务)并 <code>rm -rf public</code>（不用着急，使用 <code>hugo -t &lt;yourtheme&gt;</code> 总会重新生成这个文件夹的）</p></li>
 
-7. 基本上完成：添加 `deploy.sh` 脚本来帮你（让它可执行：`chmod +x deploy.sh`）:
+<li><p><code>git submodule add git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git public</code></p></li>
+
+<li><p>基本上完成：添加 <code>deploy.sh</code> 脚本来帮你（让它可执行：<code>chmod +x deploy.sh</code>）:</p></li>
+</ol>
+
+<pre><code>#!/bin/bash
+
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+
+# Build the project.
+hugo
+
+# Add changes to git.
+git add -A
+
+# Commit changes.
+msg=&quot;rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
+git commit -m &quot;$msg&quot;
+
+# Push source and build repos.
+git push origin master
+git subtree push --prefix=public git@github.com:spencerlyon2/hugo_gh_blog.git gh-pages
 
 </code></pre>
 
-<p>#!/bin/bash
-echo -e &ldquo;\033[0;32mDeploying updates to GitHub&hellip;\033[0m&rdquo;
-#Build the project.
-hugo # if using a theme, replace by <code>hugo -t &lt;yourtheme&gt;</code></p>
+<p>通过<code>./deploy.sh &quot;Your optional commit message&quot;</code> 把变动推送到 <code>&lt;username&gt;.github.io</code>（小心，你也许想要提交变化到 <code>&lt;you-project&gt;-hugo</code> 仓库）。</p>
 
-<h1 id="go-to-public-folder">Go To Public folder</h1>
-
-<p>cd public</p>
-
-<h1 id="add-changes-to-git">Add changes to git.</h1>
-
-<p>git add -A</p>
-
-<h1 id="commit-changes">Commit changes.</h1>
-
-<p>msg=&ldquo;rebuilding site <code>date</code>&ldquo;
-if [ $# -eq 1 ]
-  then msg=&ldquo;$1&rdquo;
-fi
-git commit -m &ldquo;$msg&rdquo;</p>
-
-<h1 id="push-source-and-build-repos">Push source and build repos.</h1>
-
-<p>git push origin master</p>
-
-<h1 id="come-back">Come Back</h1>
-
-<p>cd ..
-```</p>
-
-<h4 id="deploy-sh-your-optional-commit-message-把变动推送到-username-github-io-小心-你也许想要提交变化到-you-project-hugo-仓库"><code>./deploy.sh &quot;Your optional commit message&quot;</code> 把变动推送到 <code>&lt;username&gt;.github.io</code>（小心，你也许想要提交变化到 <code>&lt;you-project&gt;-hugo</code> 仓库）。</h4>
-
-<h4 id="就是这样-你的个人页面运行在-http-username-github-io-在10分钟延迟之后">就是这样！你的个人页面运行在 <a href="http://username.github.io/（在10分钟延迟之后）。">http://username.github.io/（在10分钟延迟之后）。</a></h4>
+<p>就是这样！你的个人页面运行在 <a href="http://username.github.io/（在10分钟延迟之后）。">http://username.github.io/（在10分钟延迟之后）。</a></p>
 
     </div>
 
