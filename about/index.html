@@ -134,25 +134,23 @@
   </div>
 </article>
         </div>
-        <div id="comments-gitment"></div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitment@0.0.3/style/default.min.css" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/gitment@0.0.3/dist/gitment.browser.min.js" crossorigin="anonymous"></script>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      var gitment = new Gitment({
+      var gitalk = new Gitalk({
         id: '2019-01-09 00:12:18 \x2b0800 CST',
         title: '关于',
-        link: decodeURI(location.href),
-        desc: 'PHP资深工程师，python、golang打杂工程师 姓名：李立朝 网络ID：zhaoaozh',
-        owner: 'zhaoaozh',
+        clientID: '88e187a492a26f322d57',
+        clientSecret: 'f93bcd11f87befb29e4f58b48f59a05b70fa4e08',
         repo: 'zhaoaozh.github.io',
-        oauth: {
-          client_id: '88e187a492a26f322d57',
-          client_secret: 'f93bcd11f87befb29e4f58b48f59a05b70fa4e08'
-        }
+        owner: 'zhaoaozh',
+        admin: ['zhaoaozh'],
+        body: decodeURI(location.href)
       });
-      gitment.render('comments-gitment');
+      gitalk.render('gitalk-container');
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
       </div>
     </main>
