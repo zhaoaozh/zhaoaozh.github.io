@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>使用Shadowsocks搭代理服务器 - 朝朝的博客</title>
+  <title>使用Shadowsocks搭建ss服务器 - 朝朝的博客</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="zhaoaozh" /><meta name="description" content="服务端 安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;amp;&amp;amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &amp;#34;server&amp;#34;:&amp;#34;172.21.119.71&amp;#34;, &amp;#34;server_port&amp;#34;:8088, &amp;#34;password&amp;#34;:&amp;#34;123456&amp;#34;, &amp;#34;timeout&amp;#34;:300, &amp;#34;method&amp;#34;:&amp;#34;rc4-md5&amp;#34;, &amp;#34;fast_open&amp;#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &amp;" /><meta name="keywords" content="zhaoaozh, php, python, golang" />
+<meta name="author" content="zhaoaozh" /><meta name="description" content="安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;amp;&amp;amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &amp;#34;server&amp;#34;:&amp;#34;172.21.119.71&amp;#34;, &amp;#34;server_port&amp;#34;:8088, &amp;#34;password&amp;#34;:&amp;#34;123456&amp;#34;, &amp;#34;timeout&amp;#34;:300, &amp;#34;method&amp;#34;:&amp;#34;rc4-md5&amp;#34;, &amp;#34;fast_open&amp;#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &amp;#34" /><meta name="keywords" content="zhaoaozh, php, python, golang" />
 
 
 
@@ -38,26 +38,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="使用Shadowsocks搭代理服务器" />
-<meta property="og:description" content="服务端 安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;&amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &#34;server&#34;:&#34;172.21.119.71&#34;, &#34;server_port&#34;:8088, &#34;password&#34;:&#34;123456&#34;, &#34;timeout&#34;:300, &#34;method&#34;:&#34;rc4-md5&#34;, &#34;fast_open&#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &" />
+<meta property="og:title" content="使用Shadowsocks搭建ss服务器" />
+<meta property="og:description" content="安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;&amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &#34;server&#34;:&#34;172.21.119.71&#34;, &#34;server_port&#34;:8088, &#34;password&#34;:&#34;123456&#34;, &#34;timeout&#34;:300, &#34;method&#34;:&#34;rc4-md5&#34;, &#34;fast_open&#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &#34" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zhaoaozh.github.io/post/shadowsocks/" /><meta property="article:published_time" content="2019-01-14T23:35:03&#43;08:00"/>
 <meta property="article:modified_time" content="2019-01-14T23:35:03&#43;08:00"/>
 
-<meta itemprop="name" content="使用Shadowsocks搭代理服务器">
-<meta itemprop="description" content="服务端 安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;&amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &#34;server&#34;:&#34;172.21.119.71&#34;, &#34;server_port&#34;:8088, &#34;password&#34;:&#34;123456&#34;, &#34;timeout&#34;:300, &#34;method&#34;:&#34;rc4-md5&#34;, &#34;fast_open&#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &">
+<meta itemprop="name" content="使用Shadowsocks搭建ss服务器">
+<meta itemprop="description" content="安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;&amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &#34;server&#34;:&#34;172.21.119.71&#34;, &#34;server_port&#34;:8088, &#34;password&#34;:&#34;123456&#34;, &#34;timeout&#34;:300, &#34;method&#34;:&#34;rc4-md5&#34;, &#34;fast_open&#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &#34">
 
 
 <meta itemprop="datePublished" content="2019-01-14T23:35:03&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-14T23:35:03&#43;08:00" />
-<meta itemprop="wordCount" content="218">
+<meta itemprop="wordCount" content="215">
 
 
 
 <meta itemprop="keywords" content="Shadowsocks,代理,翻墙," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="使用Shadowsocks搭代理服务器"/>
-<meta name="twitter:description" content="服务端 安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;&amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &#34;server&#34;:&#34;172.21.119.71&#34;, &#34;server_port&#34;:8088, &#34;password&#34;:&#34;123456&#34;, &#34;timeout&#34;:300, &#34;method&#34;:&#34;rc4-md5&#34;, &#34;fast_open&#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &"/>
+<meta name="twitter:title" content="使用Shadowsocks搭建ss服务器"/>
+<meta name="twitter:description" content="安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;&amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &#34;server&#34;:&#34;172.21.119.71&#34;, &#34;server_port&#34;:8088, &#34;password&#34;:&#34;123456&#34;, &#34;timeout&#34;:300, &#34;method&#34;:&#34;rc4-md5&#34;, &#34;fast_open&#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &#34"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -124,7 +124,7 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">使用Shadowsocks搭代理服务器</h1>
+      <h1 class="post-title">使用Shadowsocks搭建ss服务器</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2019-01-14 </span>
@@ -142,8 +142,6 @@
 <ul>
 <li>
 <ul>
-<li><a href="#服务端">服务端</a>
-<ul>
 <li><a href="#安装">安装</a>
 <ul>
 <li><a href="#debian-ubuntu">Debian / Ubuntu:</a></li>
@@ -152,7 +150,6 @@
 <li><a href="#配置文件">配置文件</a></li>
 <li><a href="#启动服务">启动服务</a></li>
 </ul></li>
-</ul></li>
 </ul>
 </nav>
   </div>
@@ -160,11 +157,9 @@
     <div class="post-content">
       
 
-<h2 id="服务端">服务端</h2>
+<h2 id="安装">安装</h2>
 
-<h3 id="安装">安装</h3>
-
-<h4 id="debian-ubuntu">Debian / Ubuntu:</h4>
+<h3 id="debian-ubuntu">Debian / Ubuntu:</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt">1
@@ -175,7 +170,7 @@
 pip install shadowsocks</pre></td></tr></table>
 </div>
 </div>
-<h4 id="centos">CentOS:</h4>
+<h3 id="centos">CentOS:</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt">1
@@ -186,7 +181,7 @@ pip install shadowsocks</pre></td></tr></table>
 pip install shadowsocks</pre></td></tr></table>
 </div>
 </div>
-<h3 id="配置文件">配置文件</h3>
+<h2 id="配置文件">配置文件</h2>
 
 <p>vim /etc/etc/shadowsocks.json</p>
 <div class="highlight"><div class="chroma">
@@ -285,7 +280,7 @@ pip install shadowsocks</pre></td></tr></table>
 </tbody>
 </table>
 
-<h3 id="启动服务">启动服务</h3>
+<h2 id="启动服务">启动服务</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt">1
@@ -330,7 +325,7 @@ pip install shadowsocks</pre></td></tr></table>
     <script type="text/javascript">
       var gitalk = new Gitalk({
         id: '2019-01-14 23:35:03 \x2b0800 CST',
-        title: '使用Shadowsocks搭代理服务器',
+        title: '使用Shadowsocks搭建ss服务器',
         clientID: '88e187a492a26f322d57',
         clientSecret: 'f93bcd11f87befb29e4f58b48f59a05b70fa4e08',
         repo: 'zhaoaozh.github.io',
