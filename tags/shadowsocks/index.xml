@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 朝朝的博客</title>
-    <link>https://zhaoaozh.github.io/post/</link>
-    <description>Recent content in Posts on 朝朝的博客</description>
+    <title>Shadowsocks on 朝朝的博客</title>
+    <link>https://zhaoaozh.github.io/tags/shadowsocks/</link>
+    <description>Recent content in Shadowsocks on 朝朝的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 14 Jan 2019 23:35:03 +0800</lastBuildDate>
     
-	<atom:link href="https://zhaoaozh.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaoaozh.github.io/tags/shadowsocks/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://zhaoaozh.github.io/post/shadowsocks/</guid>
       <description>服务端 安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;amp;&amp;amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &amp;#34;server&amp;#34;:&amp;#34;172.21.119.71&amp;#34;, &amp;#34;server_port&amp;#34;:8088, &amp;#34;password&amp;#34;:&amp;#34;123456&amp;#34;, &amp;#34;timeout&amp;#34;:300, &amp;#34;method&amp;#34;:&amp;#34;rc4-md5&amp;#34;, &amp;#34;fast_open&amp;#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &amp;</description>
-    </item>
-    
-    <item>
-      <title>使用Hugo创建自己博客在Github Pages</title>
-      <link>https://zhaoaozh.github.io/post/hugo/</link>
-      <pubDate>Thu, 10 Jan 2019 23:09:46 +0800</pubDate>
-      
-      <guid>https://zhaoaozh.github.io/post/hugo/</guid>
-      <description>目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可以</description>
     </item>
     
   </channel>

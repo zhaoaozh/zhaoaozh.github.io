@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>使用Hugo创建自己博客在Github Pages - 朝朝的博客</title>
+  <title>使用Shadowsocks搭代理服务器 - 朝朝的博客</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="zhaoaozh" /><meta name="description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可以" /><meta name="keywords" content="zhaoaozh, php, python, golang" />
+<meta name="author" content="zhaoaozh" /><meta name="description" content="服务端 安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;amp;&amp;amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &amp;#34;server&amp;#34;:&amp;#34;172.21.119.71&amp;#34;, &amp;#34;server_port&amp;#34;:8088, &amp;#34;password&amp;#34;:&amp;#34;123456&amp;#34;, &amp;#34;timeout&amp;#34;:300, &amp;#34;method&amp;#34;:&amp;#34;rc4-md5&amp;#34;, &amp;#34;fast_open&amp;#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &amp;" /><meta name="keywords" content="zhaoaozh, php, python, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://zhaoaozh.github.io/post/hugo/" />
+<link rel="canonical" href="https://zhaoaozh.github.io/post/shadowsocks/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,26 +38,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="使用Hugo创建自己博客在Github Pages" />
-<meta property="og:description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可以" />
+<meta property="og:title" content="使用Shadowsocks搭代理服务器" />
+<meta property="og:description" content="服务端 安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;&amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &#34;server&#34;:&#34;172.21.119.71&#34;, &#34;server_port&#34;:8088, &#34;password&#34;:&#34;123456&#34;, &#34;timeout&#34;:300, &#34;method&#34;:&#34;rc4-md5&#34;, &#34;fast_open&#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhaoaozh.github.io/post/hugo/" /><meta property="article:published_time" content="2019-01-10T23:09:46&#43;08:00"/>
-<meta property="article:modified_time" content="2019-01-10T23:09:46&#43;08:00"/>
+<meta property="og:url" content="https://zhaoaozh.github.io/post/shadowsocks/" /><meta property="article:published_time" content="2019-01-14T23:35:03&#43;08:00"/>
+<meta property="article:modified_time" content="2019-01-14T23:35:03&#43;08:00"/>
 
-<meta itemprop="name" content="使用Hugo创建自己博客在Github Pages">
-<meta itemprop="description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可以">
-
-
-<meta itemprop="datePublished" content="2019-01-10T23:09:46&#43;08:00" />
-<meta itemprop="dateModified" content="2019-01-10T23:09:46&#43;08:00" />
-<meta itemprop="wordCount" content="840">
+<meta itemprop="name" content="使用Shadowsocks搭代理服务器">
+<meta itemprop="description" content="服务端 安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;&amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &#34;server&#34;:&#34;172.21.119.71&#34;, &#34;server_port&#34;:8088, &#34;password&#34;:&#34;123456&#34;, &#34;timeout&#34;:300, &#34;method&#34;:&#34;rc4-md5&#34;, &#34;fast_open&#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &">
 
 
+<meta itemprop="datePublished" content="2019-01-14T23:35:03&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-14T23:35:03&#43;08:00" />
+<meta itemprop="wordCount" content="218">
 
-<meta itemprop="keywords" content="hugo,github Pages," />
+
+
+<meta itemprop="keywords" content="Shadowsocks,代理,翻墙," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="使用Hugo创建自己博客在Github Pages"/>
-<meta name="twitter:description" content="目标 本教程的目标是通过hugo在github上搭建自己的blog 安装hugo hugo 使用go语言开发的，支持多个平台。最新的release版本可以"/>
+<meta name="twitter:title" content="使用Shadowsocks搭代理服务器"/>
+<meta name="twitter:description" content="服务端 安装 Debian / Ubuntu: 1 2 apt-get install python-pip pip install shadowsocks CentOS: 1 2 yum install python-setuptools &amp;&amp; easy_install pip pip install shadowsocks 配置文件 vim /etc/etc/shadowsocks.json 1 2 3 4 5 6 7 8 { &#34;server&#34;:&#34;172.21.119.71&#34;, &#34;server_port&#34;:8088, &#34;password&#34;:&#34;123456&#34;, &#34;timeout&#34;:300, &#34;method&#34;:&#34;rc4-md5&#34;, &#34;fast_open&#34;: true } 多用户配置 1 2 3 4 5 6 7 8 9 10 11 12 { &"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -124,12 +124,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">使用Hugo创建自己博客在Github Pages</h1>
+      <h1 class="post-title">使用Shadowsocks搭代理服务器</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-01-10 </span>
+        <span class="post-time"> 2019-01-14 </span>
         <div class="post-category">
-            <a href="/categories/hugo/"> hugo </a>
+            <a href="/categories/shadowsocks/"> Shadowsocks </a>
             </div>
         
       </div>
@@ -142,13 +142,16 @@
 <ul>
 <li>
 <ul>
-<li><a href="#目标">目标</a></li>
-<li><a href="#安装hugo">安装hugo</a></li>
-<li><a href="#生成站点">生成站点</a></li>
-<li><a href="#创建文章">创建文章</a></li>
-<li><a href="#安装皮肤">安装皮肤</a></li>
-<li><a href="#运行hugo">运行hugo</a></li>
-<li><a href="#部署">部署</a></li>
+<li><a href="#服务端">服务端</a>
+<ul>
+<li><a href="#安装">安装</a>
+<ul>
+<li><a href="#debian-ubuntu">Debian / Ubuntu:</a></li>
+<li><a href="#centos">CentOS:</a></li>
+</ul></li>
+<li><a href="#配置文件">配置文件</a></li>
+<li><a href="#启动服务">启动服务</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -157,64 +160,58 @@
     <div class="post-content">
       
 
-<h2 id="目标">目标</h2>
+<h2 id="服务端">服务端</h2>
 
-<p>本教程的目标是通过hugo在github上搭建自己的blog</p>
+<h3 id="安装">安装</h3>
 
-<h2 id="安装hugo">安装hugo</h2>
+<h4 id="debian-ubuntu">Debian / Ubuntu:</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">apt-get install python-pip
+pip install shadowsocks</pre></td></tr></table>
+</div>
+</div>
+<h4 id="centos">CentOS:</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">yum install python-setuptools &amp;&amp; easy_install pip
+pip install shadowsocks</pre></td></tr></table>
+</div>
+</div>
+<h3 id="配置文件">配置文件</h3>
 
-<p>hugo 使用go语言开发的，支持多个平台。最新的release版本可以在<a href="https://github.com/gohugoio/hugo/releases">Hugo Releases</a>,当然你也可以使用Go编译器工具链源码编译hugo,在<a href="https://golang.org/doc/install/source">http://golang.org/doc/install/source</a> 查看完整的操作系统和编译架构的支持列表。</p>
-
-<p>我是mac OS,使用homebrew安装hugo,只需要运行命令：
-<code>brew install hugo</code></p>
-
-<h2 id="生成站点">生成站点</h2>
-
-<p>使用hugo快速生成站点，比如站点目录 ～/Blog</p>
-
-<p><code>hugo new site  ~/Blog</code></p>
-
-<h2 id="创建文章">创建文章</h2>
-
-<p>创建一篇文章，放在post目录，方便生产聚合页面</p>
-
-<p><code>hugo new post/markdown.md</code></p>
-
-<h2 id="安装皮肤">安装皮肤</h2>
-
-<p>从<a href="http://www.gohugo.org/theme/">皮肤列表</a>挑选中意的皮肤，找到皮肤的gitHub地址，然后克隆到themes目录中.</p>
-
-<p><code>cd themes &amp;&amp; git clone https://github.com/xianmin/hugo-theme-jane.git</code></p>
-
-<h2 id="运行hugo">运行hugo</h2>
-
-<p>在你站点的根目录执行 hugo 命令</p>
-
-<p><code>hugo server --theme jane</code></p>
-
-<p>在浏览器打开： <a href="http://localhost:1313">http://localhost:1313</a></p>
-
-<h2 id="部署">部署</h2>
-
-<p>在github 通过托管个人/组织页面来构建和发布你的github pages站点。我们需要创建两个不同的仓库,一个用于托管hugo的内容，另一个用于托管静态站点(hugo的public文件夹) 。</p>
-
-<p>一步一步来:</p>
-
-<ol>
-<li><p>在 GitHub 上创建 <code>&lt;your-project&gt;-hugo</code> 代码仓库（它将用于托管 Hugo 的内容）</p></li>
-
-<li><p>在 GitHub 上创建 <code>&lt;username&gt;.github.io</code> 代码仓库（它将用于托管 public 文件夹：静态的网站）</p></li>
-
-<li><p><code>git clone &lt;&lt;your-project&gt;-hugo-url&gt; &amp;&amp; cd &lt;your-project&gt;-hugo</code></p></li>
-
-<li><p>让你的网站在本地生效（<code>hugo server --watch -t &lt;yourtheme&gt;</code>）</p></li>
-
-<li><p>当你对结果满意时，Ctrl+C (关闭服务)并 <code>rm -rf public</code>（不用着急，使用 <code>hugo -t &lt;yourtheme&gt;</code> 总会重新生成这个文件夹的）</p></li>
-
-<li><p><code>git submodule add git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git public</code></p></li>
-
-<li><p>基本上完成：添加 <code>deploy.sh</code> 脚本来帮你（让它可执行：<code>chmod +x deploy.sh</code>）:</p></li>
-</ol>
+<p>vim /etc/etc/shadowsocks.json</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">{
+    &#34;server&#34;:&#34;172.21.119.71&#34;,  
+    &#34;server_port&#34;:8088,
+    &#34;password&#34;:&#34;123456&#34;,
+    &#34;timeout&#34;:300,
+    &#34;method&#34;:&#34;rc4-md5&#34;,
+    &#34;fast_open&#34;: true
+}</pre></td></tr></table>
+</div>
+</div>
+<p>多用户配置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt"> 1
@@ -229,42 +226,74 @@
 </span><span class="lnt">10
 </span><span class="lnt">11
 </span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-<span class="nb">echo</span> -e <span class="s2">&#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;</span>
-
-<span class="c1"># Build the project.</span>
-hugo
-
-<span class="c1"># Add changes to git.</span>
-git add -A
-
-<span class="c1"># Commit changes.</span>
-<span class="nv">msg</span><span class="o">=</span><span class="s2">&#34;rebuilding site `date`&#34;</span>
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -eq <span class="m">1</span> <span class="o">]</span>
-  <span class="k">then</span> <span class="nv">msg</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span>
-<span class="k">fi</span>
-git commit -m <span class="s2">&#34;</span><span class="nv">$msg</span><span class="s2">&#34;</span>
-
-<span class="c1"># Push source and build repos.</span>
-git push origin master
-git subtree push --prefix<span class="o">=</span>public git@github.com:spencerlyon2/hugo_gh_blog.git gh-pages</pre></td></tr></table>
+<pre class="chroma">{  
+ &#34;server&#34;:&#34;172.21.119.71&#34;，  
+  &#34;port_password&#34;: { 
+     &#34;8388&#34;: &#34;123456&#34;,  
+     &#34;8387&#34;: &#34;123456&#34;,  
+     &#34;8386&#34;: &#34;123456&#34;,  
+     &#34;8385&#34;: &#34;123456&#34;  
+ },  
+ &#34;timeout&#34;:300,  
+ &#34;method&#34;:&#34;rc4-md5&#34;,  
+ &#34;fast_open&#34;: true  
+}  </pre></td></tr></table>
 </div>
 </div>
-<p>通过<code>./deploy.sh &quot;Your optional commit message&quot;</code> 把变动推送到 <code>&lt;username&gt;.github.io</code>（小心，你也许想要提交变化到 <code>&lt;you-project&gt;-hugo</code> 仓库）。</p>
+<p>参数说明</p>
 
-<p>就是这样！你的个人页面运行在 <a href="http://username.github.io/（在10分钟延迟之后）。">http://username.github.io/（在10分钟延迟之后）。</a></p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
 
+<tbody>
+<tr>
+<td align="left">server</td>
+<td align="left">监听地址</td>
+</tr>
+
+<tr>
+<td align="left">server_port</td>
+<td align="left">监听端口</td>
+</tr>
+
+<tr>
+<td align="left">password</td>
+<td align="left">客户端连接密码</td>
+</tr>
+
+<tr>
+<td align="left">timeout</td>
+<td align="left">超时时间</td>
+</tr>
+
+<tr>
+<td align="left">method</td>
+<td align="left">加密方法，可选aes-128-cfb, aes-192-cfb, aes-256-cfb, bf-cfb, cast5-cfb, des-cfb, rc4-md5, chacha20, salsa20, rc4, table</td>
+</tr>
+
+<tr>
+<td align="left">fast_open</td>
+<td align="left">是否启用TCP-Fast-Open</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="启动服务">启动服务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">$ ssserver -c /etc/shadowsocks.json --log-file /var/log/shadowsocks.log -d start</pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
@@ -274,22 +303,23 @@ git subtree push --prefix<span class="o">=</span>public git@github.com:spencerly
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">2019-01-10</span>
+    <span class="item-content">2019-01-14</span>
   </p>
   
   
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/hugo/">hugo</a>
-          <a href="/tags/github-pages/">github Pages</a>
+          <a href="/tags/shadowsocks/">Shadowsocks</a>
+          <a href="/tags/%E4%BB%A3%E7%90%86/">代理</a>
+          <a href="/tags/%E7%BF%BB%E5%A2%99/">翻墙</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/shadowsocks/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">使用Shadowsocks搭代理服务器</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
+        <a class="next" href="/post/hugo/">
+            <span class="next-text nav-default">使用Hugo创建自己博客在Github Pages</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
       </nav>
     </footer>
   </article>
@@ -299,8 +329,8 @@ git subtree push --prefix<span class="o">=</span>public git@github.com:spencerly
     <script src="https://unpkg.com/gitalk/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-01-10 23:09:46 \x2b0800 CST',
-        title: '使用Hugo创建自己博客在Github Pages',
+        id: '2019-01-14 23:35:03 \x2b0800 CST',
+        title: '使用Shadowsocks搭代理服务器',
         clientID: '88e187a492a26f322d57',
         clientSecret: 'f93bcd11f87befb29e4f58b48f59a05b70fa4e08',
         repo: 'zhaoaozh.github.io',
