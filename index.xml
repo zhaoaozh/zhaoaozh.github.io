@@ -6,10 +6,19 @@
     <description>Recent content on 朝朝的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 14 Jan 2019 23:35:03 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 18 Jan 2019 22:40:46 +0800</lastBuildDate>
     
 	<atom:link href="https://zhaoaozh.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Supervisor管理进程</title>
+      <link>https://zhaoaozh.github.io/post/supervisor/</link>
+      <pubDate>Fri, 18 Jan 2019 22:40:46 +0800</pubDate>
+      
+      <guid>https://zhaoaozh.github.io/post/supervisor/</guid>
+      <description>安装 supervisor 可以运行在linux maxOS上，因为supervisor是python写的，安装起来也很方便，直接使用pip安装 pip install supervisor supervisor 安装完成后有</description>
+    </item>
     
     <item>
       <title>使用Shadowsocks搭建ss服务器</title>

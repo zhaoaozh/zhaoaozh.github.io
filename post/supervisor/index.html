@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>使用Supervisor管理进程 - 朝朝的博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zhaoaozh" /><meta name="description" content="安装 supervisor 可以运行在linux maxOS上，因为supervisor是python写的，安装起来也很方便，直接使用pip安装 pip install supervisor supervisor 安装完成后有" /><meta name="keywords" content="zhaoaozh, php, python, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://zhaoaozh.github.io/post/supervisor/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="使用Supervisor管理进程" />
+<meta property="og:description" content="安装 supervisor 可以运行在linux maxOS上，因为supervisor是python写的，安装起来也很方便，直接使用pip安装 pip install supervisor supervisor 安装完成后有" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhaoaozh.github.io/post/supervisor/" /><meta property="article:published_time" content="2019-01-18T22:40:46&#43;08:00"/>
+<meta property="article:modified_time" content="2019-01-18T22:40:46&#43;08:00"/>
+
+<meta itemprop="name" content="使用Supervisor管理进程">
+<meta itemprop="description" content="安装 supervisor 可以运行在linux maxOS上，因为supervisor是python写的，安装起来也很方便，直接使用pip安装 pip install supervisor supervisor 安装完成后有">
+
+
+<meta itemprop="datePublished" content="2019-01-18T22:40:46&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-18T22:40:46&#43;08:00" />
+<meta itemprop="wordCount" content="1084">
+
+
+
+<meta itemprop="keywords" content="supervisor,linux进程管理," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用Supervisor管理进程"/>
+<meta name="twitter:description" content="安装 supervisor 可以运行在linux maxOS上，因为supervisor是python写的，安装起来也很方便，直接使用pip安装 pip install supervisor supervisor 安装完成后有"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">朝朝的博客</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">朝朝的博客</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">使用Supervisor管理进程</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-18 </span>
+        <div class="post-category">
+            <a href="/categories/supervisor/"> supervisor </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#安装">安装</a></li>
+<li><a href="#配置">配置</a></li>
+<li><a href="#启动supervisord服务">启动supervisord服务</a></li>
+<li><a href="#使用supervisorctl">使用supervisorctl</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h2 id="安装">安装</h2>
+
+<p>supervisor 可以运行在linux maxOS上，因为supervisor是python写的，安装起来也很方便，直接使用pip安装</p>
+
+<p><code>pip install supervisor</code></p>
+
+<p>supervisor 安装完成后有三个可执行程序</p>
+
+<p>supervisortd : 用于接收进程管理命令</p>
+
+<p>supervisorctl: 客户端 用于和守护进程通信，发送管理进程的指令</p>
+
+<p>echo_supervisord_conf: 生成初始配置文件程序</p>
+
+<h2 id="配置">配置</h2>
+
+<p>安装supervisor后，可以运行 echo_supervisor_conf 生成默认配置文件</p>
+
+<p><code>echo_supervisord_conf &gt; /etc/supervisor/supervisord.conf</code></p>
+
+<p>生成的配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[unix_http_server]
+file=/tmp/supervisor.sock   ; UNIX socket 文件，supervisorctl 会使用
+;chmod=0700                 ; socket 文件的 mode，默认是 0700
+;chown=nobody:nogroup       ; socket 文件的 owner，格式： uid:gid
+
+;[inet_http_server]         ; HTTP 服务器，提供 web 管理界面
+;port=127.0.0.1:9001        ; Web 管理后台运行的 IP 和端口，如果开放到公网，需要注意安全性
+;username=user              ; 登录管理后台的用户名
+;password=123               ; 登录管理后台的密码
+
+[supervisord]
+logfile=/tmp/supervisord.log ; 日志文件，默认是 $CWD/supervisord.log
+logfile_maxbytes=50MB        ; 日志文件大小，超出会 rotate，默认 50MB
+logfile_backups=10           ; 日志文件保留备份数量默认 10
+loglevel=info                ; 日志级别，默认 info，其它: debug,warn,trace
+pidfile=/tmp/supervisord.pid ; pid 文件
+nodaemon=false               ; 是否在前台启动，默认是 false，即以 daemon 的方式启动
+minfds=1024                  ; 可以打开的文件描述符的最小值，默认 1024
+minprocs=200                 ; 可以打开的进程数的最小值，默认 200
+
+; the below section must remain in the config file for RPC
+; (supervisorctl/web interface) to work, additional interfaces may be
+; added by defining them in separate rpcinterface: sections
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+
+[supervisorctl]
+serverurl=unix:///tmp/supervisor.sock ; 通过 UNIX socket 连接 supervisord，路径与 unix_http_server 部分的 file 一致
+;serverurl=http://127.0.0.1:9001 ; 通过 HTTP 的方式连接 supervisord
+
+; 包含其他的配置文件
+[include]
+files = relative/directory/*.ini    ; 可以是 *.conf 或 *.ini</pre></td></tr></table>
+</div>
+</div>
+<p>配置管理进程</p>
+
+<p>我们可以将要管理的进程配置文件写在supervisord.conf,但不建议这么做，我最好将不同的程序写到不同的配置文件中，然后通过include 包含到supervisord.conf</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[include]
+files = /etc/supervisor/*.conf</pre></td></tr></table>
+</div>
+</div>
+<p>管理进程的配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[program:phpTest]
+numprocs=2                                      ;启动程序数量
+process_name=%(program_name)s_%(process_num)02d ;进程名称 
+directory=/wwwroot/php_test                     ;程序启动目录
+command=/usr/bin/php test.php                   ;启动命令
+autostart=true                                  ;supervisord启动时也自动启动
+startsecs=2                                     ;启动2秒后没有异常退出，就当作正常启动了
+autorestart=true                                ;程序异常退出后自动重启
+startretries=3                                  ;重启失败自动重试次数，默认3
+user=root                                       ;启动用户
+redirect_stderr=true                            ;把stderr重定向到stdout，默认false
+stdout_logfile_maxbytes=20MB                    ;stdout日志文件大小
+stdout_logfile_backups=3                        ;stdout日志备份数
+stdout_logfile=/tmp/test.log
+environment=run_mode=&#34;test&#34;                     ;设置环境变量
+stopasgroup=true                                ;默认为false,进程被杀死时，是否向这个进程组发送stop信号，包括子进程
+killasgroup=true                                ;默认为false，向进程组发送kill信号，包括子进程</pre></td></tr></table>
+</div>
+</div>
+<h2 id="启动supervisord服务">启动supervisord服务</h2>
+
+<p><code>supervisord -c /etc/supervisor/supervisord.conf</code></p>
+
+<h2 id="使用supervisorctl">使用supervisorctl</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">supervisorctl status           # 查看程序状态
+supervisorctl stop phpTest     # 关闭进程 phpTest
+supervisorctl start phpTest    # 开启进程 phpTest
+supervisorctl restart phpTest  # 重启进程 phpTest
+supervisorctl stop all         # 停止全部进程
+supervisorctl reload  #载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程
+supervisorctl update           # 根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启</pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">zhaoaozh</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-01-18</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/supervisor/">supervisor</a>
+          <a href="/tags/linux%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">linux进程管理</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/shadowsocks/">
+            <span class="next-text nav-default">使用Shadowsocks搭建ss服务器</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-01-18 22:40:46 \x2b0800 CST',
+        title: '使用Supervisor管理进程',
+        clientID: '88e187a492a26f322d57',
+        clientSecret: 'f93bcd11f87befb29e4f58b48f59a05b70fa4e08',
+        repo: 'zhaoaozh.github.io',
+        owner: 'zhaoaozh',
+        admin: ['zhaoaozh'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhaoaozh@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhaoaozh" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/zhaoaozh" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://gitlab.com/zhaoaozh" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="https://zhaoaozh.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">zhaoaozh</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
