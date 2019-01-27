@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>defer on 朝朝的博客</title>
+    <link>https://zhaoaozh.github.io/tags/defer/</link>
+    <description>Recent content in defer on 朝朝的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 27 Jan 2019 21:29:12 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhaoaozh.github.io/tags/defer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang中defer、return、返回值间执行顺序的坑</title>
+      <link>https://zhaoaozh.github.io/post/go-defer/</link>
+      <pubDate>Sun, 27 Jan 2019 21:29:12 +0800</pubDate>
+      
+      <guid>https://zhaoaozh.github.io/post/go-defer/</guid>
+      <description>Go语言中defer在实际使用中，经常由于没有真正搞清楚defer、return、返回值间的执行顺序,从掉入坑中. 看下面代码 A.无名返回值 1</description>
+    </item>
+    
+  </channel>
+</rss>

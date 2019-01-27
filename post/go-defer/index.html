@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Golang中defer、return、返回值间执行顺序的坑 - 朝朝的博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zhaoaozh" /><meta name="description" content="Go语言中defer在实际使用中，经常由于没有真正搞清楚defer、return、返回值间的执行顺序,从掉入坑中. 看下面代码 A.无名返回值 1" /><meta name="keywords" content="zhaoaozh, php, python, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://zhaoaozh.github.io/post/go-defer/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Golang中defer、return、返回值间执行顺序的坑" />
+<meta property="og:description" content="Go语言中defer在实际使用中，经常由于没有真正搞清楚defer、return、返回值间的执行顺序,从掉入坑中. 看下面代码 A.无名返回值 1" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhaoaozh.github.io/post/go-defer/" /><meta property="article:published_time" content="2019-01-27T21:29:12&#43;08:00"/>
+<meta property="article:modified_time" content="2019-01-27T21:29:12&#43;08:00"/>
+
+<meta itemprop="name" content="Golang中defer、return、返回值间执行顺序的坑">
+<meta itemprop="description" content="Go语言中defer在实际使用中，经常由于没有真正搞清楚defer、return、返回值间的执行顺序,从掉入坑中. 看下面代码 A.无名返回值 1">
+
+
+<meta itemprop="datePublished" content="2019-01-27T21:29:12&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-27T21:29:12&#43;08:00" />
+<meta itemprop="wordCount" content="727">
+
+
+
+<meta itemprop="keywords" content="golang,defer," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Golang中defer、return、返回值间执行顺序的坑"/>
+<meta name="twitter:description" content="Go语言中defer在实际使用中，经常由于没有真正搞清楚defer、return、返回值间的执行顺序,从掉入坑中. 看下面代码 A.无名返回值 1"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">朝朝的博客</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">朝朝的博客</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Golang中defer、return、返回值间执行顺序的坑</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-27 </span>
+        <div class="post-category">
+            <a href="/categories/golang/"> golang </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>Go语言中defer在实际使用中，经常由于没有真正搞清楚defer、return、返回值间的执行顺序,从掉入坑中.</p>
+
+<p>看下面代码</p>
+
+<p>A.无名返回值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kn">package</span> <span class="nx">main</span>
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;a return :&#34;</span><span class="p">,</span><span class="nf">a</span><span class="p">())</span>  <span class="c1">//打印结果 0
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">a</span><span class="p">()</span> <span class="kt">int</span><span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span>
+	<span class="k">defer</span> <span class="kd">func</span><span class="p">(){</span>
+		<span class="nx">i</span><span class="o">++</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;a defer2:&#34;</span><span class="p">,</span><span class="nx">i</span><span class="p">)</span>  <span class="c1">//打印结果 2
+</span><span class="c1"></span>	<span class="p">}()</span>
+
+	<span class="k">defer</span> <span class="kd">func</span><span class="p">(){</span>
+		<span class="nx">i</span><span class="o">++</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;a defer1&#34;</span><span class="p">,</span><span class="nx">i</span><span class="p">)</span>  <span class="c1">//打印结果 1
+</span><span class="c1"></span>
+	<span class="p">}()</span>
+	<span class="k">return</span> <span class="nx">i</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>B.有名返回值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kn">package</span> <span class="nx">main</span>
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;b return :&#34;</span><span class="p">,</span><span class="nf">b</span><span class="p">())</span>  <span class="c1">//打印结果  2
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">b</span><span class="p">()</span> <span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">){</span>
+	<span class="k">defer</span> <span class="kd">func</span><span class="p">(){</span>
+		<span class="nx">i</span><span class="o">++</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;b defer2:&#34;</span><span class="p">,</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//打印结果  2
+</span><span class="c1"></span>	<span class="p">}()</span>
+
+	<span class="k">defer</span> <span class="kd">func</span><span class="p">(){</span>
+		<span class="nx">i</span><span class="o">++</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;b defer1&#34;</span><span class="p">,</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//打印结果  1
+</span><span class="c1"></span>
+	<span class="p">}()</span>
+	<span class="k">return</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>C. 返回值是指针类型</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;c return:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="nf">c</span><span class="p">()))</span> <span class="c1">// 打印结果为 c return: 2
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">c</span><span class="p">()</span> <span class="o">*</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span>
+	<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">i</span><span class="o">++</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;c defer2:&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="c1">// 打印结果为 c defer: 2
+</span><span class="c1"></span>	<span class="p">}()</span>
+	<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">i</span><span class="o">++</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;c defer1:&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="c1">// 打印结果为 c defer: 1
+</span><span class="c1"></span>	<span class="p">}()</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">i</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>解释：</p>
+
+<p>a()int 函数的返回值没有被提前声名，其值来自于其他变量的赋值，而defer中修改的也是其他变量，而非返回值本身，因此函数退出时返回值并没有被改变。</p>
+
+<p>b()(i int) 函数的返回值被提前声名，也就意味着defer中是可以调用到真实返回值的，因此defer在return赋值返回值 i 之后，再一次地修改了 i 的值，最终函数退出后的返回值才会是defer修改过的值。</p>
+
+<p>虽然 c()*int 的返回值没有被提前声明，但是由于 c()*int 的返回值是指针变量，那么在return将变量 i 的地址赋给返回值后，defer再次修改了 i 在内存中的实际值，因此函数退出时返回值虽然依旧是原来的指针地址，但是其指向的内存实际值已经被成功修改了。</p>
+
+<p>结论：</p>
+
+<p>1.多个defer的执行顺序，先进后出</p>
+
+<p>2.defer、return、返回值三者的执行顺序，return最先执行（return 将结果写入返回值中）,接着defer 以倒序的顺序执行收尾的工作，最后函数携带返回值并退出</p>
+
+<p>参考原文:<a href="https://my.oschina.net/henrylee2cn/blog/505535">henrylee2cn的个人空间</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">zhaoaozh</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-01-27</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/golang/">golang</a>
+          <a href="/tags/defer/">defer</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/supervisor/">
+            <span class="next-text nav-default">使用Supervisor管理进程</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-01-27 21:29:12 \x2b0800 CST',
+        title: 'Golang中defer、return、返回值间执行顺序的坑',
+        clientID: '88e187a492a26f322d57',
+        clientSecret: 'f93bcd11f87befb29e4f58b48f59a05b70fa4e08',
+        repo: 'zhaoaozh.github.io',
+        owner: 'zhaoaozh',
+        admin: ['zhaoaozh'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhaoaozh@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhaoaozh" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/zhaoaozh" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://gitlab.com/zhaoaozh" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="https://zhaoaozh.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">zhaoaozh</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
